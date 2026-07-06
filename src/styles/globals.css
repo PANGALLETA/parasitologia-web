@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background:#F8F9FA;
+    font-family: "Poppins", sans-serif;
+}
+
+.leaflet-container{
+
+    background:#000000 !important;
+
+    font-family:inherit;
+
+}
+
+.leaflet-tooltip.tooltip-mapa{
+
+    background:#065f46;
+
+    color:white;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:8px 14px;
+
+    font-weight:700;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+}
+
+.leaflet-tooltip.tooltip-mapa:before{
+
+    display:none;
+
+}
+
+.leaflet-interactive{
+
+    transition:all .25s ease;
+
+    cursor:pointer;
+
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.12));
+
+}
+
+.leaflet-interactive:hover{
+
+    filter:
+
+        brightness(1.08)
+
+        drop-shadow(0 8px 16px rgba(0,0,0,.25));
+
+}
