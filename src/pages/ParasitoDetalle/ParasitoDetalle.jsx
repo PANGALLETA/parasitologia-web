@@ -8,6 +8,7 @@ import Tabs from "../../components/ParasitoDetalle/Tabs";
 import Informacion from "../../components/ParasitoDetalle/Informacion";
 import Partes from "../../components/ParasitoDetalle/Partes";
 import Mapa from "../../components/ParasitoDetalle/Mapa";
+import Quiz from "../../components/ParasitoDetalle/Quiz/Quiz";
 
 export default function ParasitoDetalle() {
 
@@ -124,11 +125,11 @@ export default function ParasitoDetalle() {
 
                     {tab === "Quiz" && (
 
-                        <div>
+                        <Quiz
 
-                            Próximamente Quiz
+                            preguntas={data.preguntas}
 
-                        </div>
+                        />
 
                     )}
 
