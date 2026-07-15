@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     Microscope,
@@ -28,6 +28,58 @@ export default function Viewer3D({
     });
 
     const [zoom, setZoom] = useState(1);
+
+    useEffect(() => {
+
+    const elemento = viewer.current;
+
+    if (!elemento) return;
+
+    function wheel(e) {
+
+        e.preventDefault();
+
+        setZoom(prev => {
+
+            let nuevo = prev - e.deltaY * 0.001;
+
+            if (nuevo < 0.8) nuevo = 0.8;
+
+            if (nuevo > 2) nuevo = 2;
+
+            return nuevo;
+
+        });
+
+    }
+
+    elemento.addEventListener(
+
+        "wheel",
+
+        wheel,
+
+        {
+
+            passive: false,
+
+        }
+
+    );
+
+    return () => {
+
+        elemento.removeEventListener(
+
+            "wheel",
+
+            wheel
+
+        );
+
+    };
+
+}, []);
 
     const [actual, setActual] = useState(0);
 
@@ -137,24 +189,6 @@ export default function Viewer3D({
 
     }
 
-    function rueda(e) {
-
-        e.preventDefault();
-
-        setZoom((prev) => {
-
-            let nuevo = prev - e.deltaY * 0.001;
-
-            if (nuevo < 0.8) nuevo = 0.8;
-
-            if (nuevo > 2) nuevo = 2;
-
-            return nuevo;
-
-        });
-
-    }
-
         return (
 
         <div className="w-full space-y-10">
@@ -170,8 +204,6 @@ export default function Viewer3D({
                 onMouseMove={mover}
 
                 onMouseLeave={salir}
-
-                onWheel={rueda}
 
                 className="relative flex justify-center items-center overflow-hidden"
 
