@@ -9,6 +9,7 @@ import Informacion from "../../components/ParasitoDetalle/Informacion";
 import Partes from "../../components/ParasitoDetalle/Partes";
 import Mapa from "../../components/ParasitoDetalle/Mapa";
 import Quiz from "../../components/ParasitoDetalle/Quiz/Quiz";
+import WebAR from "../../components/ParasitoDetalle/WebAR/WebAR";
 
 export default function ParasitoDetalle() {
 
@@ -135,11 +136,13 @@ export default function ParasitoDetalle() {
 
                     {tab === "WebAR" && (
 
-                        <div>
+                        <WebAR
 
-                            Próximamente WebAR
+                            parasito={data.parasito}
 
-                        </div>
+                            partes={data.partes}
+
+                        />
 
                     )}
 
