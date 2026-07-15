@@ -62,8 +62,6 @@ export default function Footer() {
 
                             <li><Link to="/">Inicio</Link></li>
                             <li><Link to="/parasitos">Parásitos</Link></li>
-                            <li><Link to="/mapa">Mapa</Link></li>
-                            <li><Link to="/quiz">Quiz</Link></li>
 
                         </ul>
 
@@ -119,7 +117,7 @@ export default function Footer() {
 
                             <span>
 
-                                j.candamil@utp.edu.co
+                                soporte@utp.edu.co
 
                             </span>
 
