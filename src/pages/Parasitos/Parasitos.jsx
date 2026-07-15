@@ -1,25 +1,22 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 
 import { getParasitos } from "../../services/parasitoService";
 
 import ParasitoGrid from "../../components/Parasitos/ParasitoGrid";
 import ParasitoSearch from "../../components/Parasitos/ParasitoSearch";
 import QrScannerModal from "../../components/Parasitos/QrScannerModal";
-import { useNavigate } from "react-router-dom";
 
 export default function Parasitos() {
 
     const [parasitos, setParasitos] = useState([]);
-
     const [filtered, setFiltered] = useState([]);
-
     const [search, setSearch] = useState("");
-
     const [loading, setLoading] = useState(true);
+    const [openQr, setOpenQr] = useState(false);
 
     const navigate = useNavigate();
-
-    const [openQr, setOpenQr] = useState(false);
 
     useEffect(() => {
 
@@ -85,7 +82,7 @@ export default function Parasitos() {
 
     }
 
-        return (
+    return (
 
         <section className="bg-gradient-to-b from-green-50 to-white min-h-screen py-20">
 
@@ -93,26 +90,88 @@ export default function Parasitos() {
 
                 <div className="max-w-3xl">
 
-                    <span className="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-700 font-medium">
+                    {/* Botón volver */}
+
+                    <div className="mb-6">
+
+                        <Link
+
+                            to="/"
+
+                            className="
+                                inline-flex
+                                items-center
+                                gap-2
+                                px-5
+                                py-3
+                                rounded-xl
+                                bg-white
+                                border
+                                border-green-200
+                                text-green-700
+                                font-semibold
+                                shadow-md
+                                hover:bg-green-50
+                                hover:shadow-lg
+                                transition-all
+                            "
+
+                        >
+
+                            <ArrowLeft size={20} />
+
+                            Volver al inicio
+
+                        </Link>
+
+                    </div>
+
+                    {/* Etiqueta */}
+
+                    <span
+
+                        className="
+                            inline-flex
+                            items-center
+                            px-4
+                            py-2
+                            rounded-full
+                            bg-green-100
+                            text-green-700
+                            font-medium
+                        "
+
+                    >
+
                         🦠 Atlas Científico
+
                     </span>
 
                     <h1 className="mt-6 text-5xl lg:text-6xl font-extrabold text-green-900">
+
                         Atlas de Parásitos
+
                     </h1>
 
                     <p className="mt-5 text-lg text-gray-600 leading-8">
+
                         Explora información científica sobre especies de importancia veterinaria.
                         Busca por nombre común, nombre científico, familia o escanea un código QR.
+
                     </p>
 
                 </div>
 
                 <ParasitoSearch
+
                     value={search}
+
                     onChange={(e) => setSearch(e.target.value)}
+
                     onQrClick={handleQr}
+
                     total={filtered.length}
+
                 />
 
                 {
@@ -120,24 +179,29 @@ export default function Parasitos() {
                     loading ? (
 
                         <div className="mt-16 text-center text-gray-500">
+
                             Cargando...
+
                         </div>
 
                     ) : (
 
                         <ParasitoGrid
+
                             parasitos={filtered}
+
                         />
 
                     )
 
                 }
 
-                {/* Modal QR */}
-
                 <QrScannerModal
+
                     open={openQr}
+
                     onClose={() => setOpenQr(false)}
+
                     onSuccess={(uuid) => {
 
                         setOpenQr(false);
@@ -145,6 +209,7 @@ export default function Parasitos() {
                         navigate(`/parasito/${uuid}`);
 
                     }}
+
                 />
 
             </div>
@@ -152,4 +217,5 @@ export default function Parasitos() {
         </section>
 
     );
+
 }

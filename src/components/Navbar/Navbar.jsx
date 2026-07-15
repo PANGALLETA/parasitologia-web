@@ -9,8 +9,6 @@ export default function Navbar() {
     const links = [
         { name: "Inicio", path: "/" },
         { name: "Parásitos", path: "/parasitos" },
-        { name: "Mapa", path: "/mapa" },
-        { name: "Quiz", path: "/quiz" },
     ];
 
     return (

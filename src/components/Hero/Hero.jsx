@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Container from "../Container/Container";
 import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
     return (
@@ -36,17 +37,15 @@ export default function Hero() {
 
                         <div className="mt-10 flex flex-col sm:flex-row gap-4">
 
-                            <Button>
+                            <Link to="/parasitos">
 
-                                Explorar Atlas
+                                <Button>
 
-                            </Button>
+                                    Explorar Atlas
 
-                            <Button variant="secondary">
+                                </Button>
 
-                                Ver Mapa
-
-                            </Button>
+                            </Link>
 
                         </div>
 

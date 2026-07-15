@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom";
 
 import { getParasito } from "../../services/parasitoService";
 
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+
 import Hero from "../../components/ParasitoDetalle/Hero";
 import Tabs from "../../components/ParasitoDetalle/Tabs";
 import Informacion from "../../components/ParasitoDetalle/Informacion";
@@ -70,6 +73,32 @@ export default function ParasitoDetalle() {
         <>
 
             <Hero parasito={data.parasito} />
+
+            <div className="container mx-auto px-6 pt-8">
+
+                <Link
+
+                    to="/parasitos"
+
+                    className="
+                        inline-flex
+                        items-center
+                        gap-2
+                        text-green-700
+                        font-semibold
+                        hover:text-green-900
+                        transition-colors
+                    "
+
+                >
+
+                    <ArrowLeft size={18} />
+
+                    Volver al Atlas
+
+                </Link>
+
+            </div>
 
             <div id="tabs">
 
